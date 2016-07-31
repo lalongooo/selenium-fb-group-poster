@@ -2,8 +2,8 @@ Selenium Facebook Group Poster
 ===================
 **A Selenium Script to post an image with text on the Facebook Groups you are member.**
 
+Setup
 ----------
-**Setup**
 
  - Verify you have Python 2.7.x installed
 ``` shell
@@ -46,3 +46,12 @@ $ (venv) python fbposter.py
 
 Please, report any issues you may encounter.
  
+License?
+----------
+
+This projectis licensed under the [MIT license](LICENSE).
+
+Questions?
+----------
+
+If you have any questions, please feel free to email me at hdez.jeduardo@gmail.com, or better yet, [fill out an issue](https://github.com/lalongooo/selenium-fb-group-poster/issues/new) so everyone can benefit from what's your question about.
