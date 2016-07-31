@@ -33,7 +33,6 @@ $ (venv) pip install selenium
 ``` shell
 git clone https://github.com/lalongooo/selenium-fb-group-poster
 ```
- - Clone this repo
  - Move to the `selenium-fb-group-poster`
 
 ``` shell
@@ -43,4 +42,7 @@ $ (venv) cd selenium-fb-group-poster
 ``` shell
 $ (venv) python fbposter.py
 ```
- - Enjoy
+ - Enjoy!
+
+Please, report any issues you may encounter.
+ 
