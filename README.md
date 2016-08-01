@@ -49,7 +49,7 @@ Please, report any issues you may encounter.
 License?
 ----------
 
-This projectis licensed under the [MIT license](LICENSE).
+This project is licensed under the [MIT license](LICENSE).
 
 Questions?
 ----------
