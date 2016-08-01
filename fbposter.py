@@ -8,12 +8,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-group_links = [
-	# Your Facebook Groups links.
-	# IMPORTANT: You must be a member of the group, being ADMIN nor required.
-	"https://www.facebook.com/groups/ayearofrunning/", # A group of Mark Zuckerberg
-]
-
 def main():
 
 	# Your Facebook account user and password
@@ -22,6 +16,11 @@ def main():
 	message = "Checkout an amazing selenium script for posting in Facebook Groups!\nhttps://github.com/lalongooo/selenium-fb-group-poster"
 	attach_image = True
 	image_path = "/path/to/the/photo/you/want/to/upload"
+	group_links = [
+		# Your Facebook Groups links.
+		# IMPORTANT: You must be a member of the group, being ADMIN nor required.
+		"https://www.facebook.com/groups/ayearofrunning/", # A group of Mark Zuckerberg
+	]
 
 	profile = webdriver.FirefoxProfile()
 	profile.set_preference("browser.cache.disk.enable", False)
