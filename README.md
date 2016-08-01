@@ -38,15 +38,38 @@ git clone https://github.com/lalongooo/selenium-fb-group-poster
 ``` shell
 $ (venv) cd selenium-fb-group-poster
 ```
- - Run the script
+Configure the script and enjoy!
+----------
+
+There is a `main` method in the script, you need to edit and provide your Facebook user and password, the message you want to post, whether you want to attache an image, along within its path and the links of the Facebook Groups you are member of:
+``` shell 
+ def main():
+
+	# Your Facebook account user and password
+	usr = ""
+	pwd = ""
+	message = "Checkout an amazing selenium script for posting in Facebook Groups!\nhttps://github.com/lalongooo/selenium-fb-group-poster"
+	attach_image = True
+	image_path = "/path/to/the/photo/you/want/to/upload"
+	group_links = [
+		# Your Facebook Groups links.
+		# IMPORTANT: You must be a member of the group, being ADMIN nor required.
+		"https://www.facebook.com/groups/ayearofrunning/", # A group of Mark Zuckerberg
+	]
+ ```
+
+ Run the script
 ``` shell
 $ (venv) python fbposter.py
 ```
- - Enjoy!
 
-Please, report any issues you may encounter.
  
-License?
+To do:
+----------
+ - Provide parameters via the command line instead of editing the script.
+ - ???
+
+License
 ----------
 
 This project is licensed under the [MIT license](LICENSE).
