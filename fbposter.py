@@ -19,6 +19,9 @@ def main():
 	# Your Facebook account user and password
 	usr = ""
 	pwd = ""
+	message = "Checkout an amazing selenium script for posting in Facebook Groups!\nhttps://github.com/lalongooo/selenium-fb-group-poster"
+	attach_image = True
+	image_path = "/path/to/the/photo/you/want/to/upload"
 
 	profile = webdriver.FirefoxProfile()
 	profile.set_preference("browser.cache.disk.enable", False)
@@ -52,15 +55,16 @@ def main():
 		post_box=driver.find_element_by_xpath("//*[@name='xhpc_message_text']")
 
 		# Enter the text we want to post to Facebook
-		post_box.send_keys("Checkout an amazing selenium script for posting in Facebook Groups!\nhttps://github.com/lalongooo/selenium-fb-group-poster")	
+		post_box.send_keys(message)
 		sleep(10)
 
-		# Click on the add media button
-		addMedia = driver.find_element_by_xpath("//*[@data-testid='media-attachment-selector']")
-		addMedia.click()
+		if attach_image:
+			# Click on the add media button
+			addMedia = driver.find_element_by_xpath("//*[@data-testid='media-attachment-selector']")
+			addMedia.click()
 
-		# Provide picture file path
-		driver.find_element_by_xpath("//div[text()='Upload Photos/Video']/following-sibling::div/input").send_keys("/path/to/the/photo/you/want/to/upload");
+			# Provide picture file path
+			driver.find_element_by_xpath("//div[text()='Upload Photos/Video']/following-sibling::div/input").send_keys(image_path)
 
 		# Get the 'Post' button and click on it
 		buttons = driver.find_elements_by_xpath("//*[contains(text(), 'Post') and starts-with(local-name(), 'button')]")
