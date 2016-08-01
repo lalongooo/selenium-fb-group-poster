@@ -41,7 +41,7 @@ $ (venv) cd selenium-fb-group-poster
 Configure the script and enjoy!
 ----------
 
-There is a `main` method in the script, you need to edit and provide your Facebook user and password, the message you want to post and whether you want to attache an image, along within its path:
+There is a `main` method in the script, you need to edit and provide your Facebook user and password, the message you want to post, whether you want to attache an image, along within its path and the links of the Facebook Groups you are member of:
 ``` shell 
  def main():
 
@@ -51,6 +51,11 @@ There is a `main` method in the script, you need to edit and provide your Facebo
 	message = "Checkout an amazing selenium script for posting in Facebook Groups!\nhttps://github.com/lalongooo/selenium-fb-group-poster"
 	attach_image = True
 	image_path = "/path/to/the/photo/you/want/to/upload"
+	group_links = [
+		# Your Facebook Groups links.
+		# IMPORTANT: You must be a member of the group, being ADMIN nor required.
+		"https://www.facebook.com/groups/ayearofrunning/", # A group of Mark Zuckerberg
+	]
  ```
 
  Run the script
