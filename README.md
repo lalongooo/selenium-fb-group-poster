@@ -67,6 +67,7 @@ $ (venv) python fbposter.py
 To do:
 ----------
  - Provide parameters via the command line instead of editing the script.
+ - Improve/add exception handling
  - ???
 
 License
