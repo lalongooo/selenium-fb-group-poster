@@ -66,10 +66,9 @@ def main():
 			driver.find_element_by_xpath("//div[text()='Upload Photos/Video']/following-sibling::div/input").send_keys(image_path)
 
 		# Get the 'Post' button and click on it
-		buttons = driver.find_elements_by_xpath("//*[contains(text(), 'Post') and starts-with(local-name(), 'button')]")
-		button = buttons[0]
-		button.send_keys(Keys.RETURN)
-		sleep(10)
+		post_button = driver.find_element_by_xpath("//*[@data-testid='react-composer-post-button']")
+		button.click()
+		sleep(5)
 
 	# driver.close()
 
