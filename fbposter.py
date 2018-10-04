@@ -22,23 +22,27 @@ def main():
 		"https://www.facebook.com/groups/ayearofrunning/", # A group of Mark Zuckerberg
 	]
 
-	profile = webdriver.FirefoxProfile()
-	profile.set_preference("browser.cache.disk.enable", False)
-	profile.set_preference("browser.cache.memory.enable", False)
-	profile.set_preference("browser.cache.offline.enable", False)
-	profile.set_preference("network.http.use-cache", False)
+	chrome_options = webdriver.ChromeOptions()
+	chrome_options.add_experimental_option("detach", True)
+	chrome_options.add_argument("--disable-infobars")
+	chrome_options.add_experimental_option("prefs", { \
+		"profile.default_content_setting_values.notifications": 2 # 1:allow, 2:block 
+	})
 
-	driver = webdriver.Firefox()
+	driver = webdriver.Chrome(options=chrome_options)
 	driver.implicitly_wait(15) # seconds
 
-	# Login to Facebook
-	driver.get("http://www.facebook.org")
+	# Go to facebook.com
+	driver.get("http://www.facebook.com")
+	
+	# Enter user email
 	elem = driver.find_element_by_id("email")
 	elem.send_keys(usr)
+	# Enter user password
 	elem = driver.find_element_by_id("pass")
 	elem.send_keys(pwd)
+	# Login
 	elem.send_keys(Keys.RETURN)
-	driver.implicitly_wait(5)
 
 	for group in group_links:
 
@@ -47,27 +51,34 @@ def main():
 
 		# Click the post box
 		post_box=driver.find_element_by_xpath("//*[@name='xhpc_message_text']")
-		post_box=driver.find_element_by_xpath("//*[@name='xhpc_message_text']")
-		post_box=driver.find_element_by_xpath("//*[@name='xhpc_message_text']")
-		sleep(10)
-		post_box=driver.find_element_by_xpath("//*[@name='xhpc_message_text']")
-		post_box=driver.find_element_by_xpath("//*[@name='xhpc_message_text']")
 
 		# Enter the text we want to post to Facebook
 		post_box.send_keys(message)
-		sleep(10)
 
 		if attach_image:
 			# Click on the add media button
-			addMedia = driver.find_element_by_xpath("//*[@data-testid='media-attachment-selector']")
-			addMedia.click()
+			addMediaButton = driver.find_elements_by_xpath("//*[contains(text(), 'Add Photo/Video')]")[0]
+			addMediaButton.click()
+			sleep(5)
+
+			# Click the 'Upload Photo/Video' button
+			uploadPhotoButton = driver.find_element_by_xpath("//*[@data-testid='media-attachment-add-photo']")
+			uploadPhotoButton.send_keys(image_path)
+			
+			# Wait for the image to upload
+			sleep(5)
 
 			# Provide picture file path
-			driver.find_element_by_xpath("//div[text()='Upload Photos/Video']/following-sibling::div/input").send_keys(image_path)
+			# driver.find_element_by_xpath("//div[text()='Add Photo/Video']/following-sibling::div/input").send_keys(image_path)
 
-		# Get the 'Post' button and click on it
 		post_button = driver.find_element_by_xpath("//*[@data-testid='react-composer-post-button']")
-		button.click()
+		clickable = False
+		while not clickable:
+			cursor = post_button.find_element_by_tag_name('span').value_of_css_property("cursor")
+			if cursor == "pointer":
+				clickable = True
+				break
+		post_button.click()
 		sleep(5)
 
 	# driver.close()
