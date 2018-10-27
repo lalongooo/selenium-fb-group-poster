@@ -71,15 +71,13 @@ def main():
 			# Provide picture file path
 			# driver.find_element_by_xpath("//div[text()='Add Photo/Video']/following-sibling::div/input").send_keys(image_path)
 
-		post_button = driver.find_element_by_xpath("//*[@data-testid='react-composer-post-button']")
-		clickable = False
-		while not clickable:
-			cursor = post_button.find_element_by_tag_name('span').value_of_css_property("cursor")
-			if cursor == "pointer":
-				clickable = True
-				break
-		post_button.click()
 		sleep(5)
+		buttons = driver.find_elements_by_tag_name("button")
+		sleep(5)
+		for button in buttons:
+			if button.text == "Post":
+				button.click()
+				sleep(300)
 
 	# driver.close()
 
